@@ -41,7 +41,7 @@
                 <h1 class="text-xl md:text-2xl font-bold">阪本病院</h1>
                 <p class="text-sm md:text-base opacity-90">外来リハビリテーション部</p>
             </div>
-            <!-- ナビゲーション（必要に応じてリンクを追加） -->
+            <!-- ナビゲーション -->
             <nav class="hidden md:block">
                 <a href="#" class="px-4 py-2 hover:bg-white/20 rounded-lg transition">ホーム</a>
                 <a href="#exercises" class="px-4 py-2 hover:bg-white/20 rounded-lg transition">体操一覧</a>
@@ -79,23 +79,25 @@
                 
                 <div class="flex justify-center bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-300">
                     <!-- 
-                        ★重要: 画像のファイル名を指定してください。
-                        同じフォルダに 'image_8018db.jpg' がある前提の記述です。
-                        画像が表示されない場合は、ファイル名を確認してください。
+                        画像ファイル名: image_8018db.jpg
+                        画像を長押ししやすいように、imgタグ自体にも工夫をしています。
                     -->
-                    <img src="URLから画像と動画でのやり方を解説。➡.png" alt="健康体操の解説画像" class="max-w-full h-auto rounded shadow-sm">
+                    <img src="./image_8018db.jpg" alt="健康体操の解説画像" class="max-w-full h-auto rounded shadow-sm cursor-pointer hover:opacity-95 transition">
                 </div>
                 
                 <div class="mt-6 text-center">
-                    <a href="./image_8018db.jpg" download class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition shadow-md">
-                        <i class="fas fa-download mr-2"></i> 画像を保存する
-                    </a>
-                    <p class="text-sm text-gray-500 mt-2">スマホの方は画像を長押しして保存してください</p>
+                    <!-- 
+                        【変更点1】PC用保存ボタンを削除し、案内を常に表示するように変更しました。
+                    -->
+                    <div class="bg-blue-50 text-blue-800 px-4 py-3 rounded-lg inline-block">
+                        <i class="fas fa-hand-pointer mr-1"></i>
+                        <span class="font-bold text-sm">画像を「長押し」（PCは右クリック）すると保存できます</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 体操の詳細説明セクション (画像の内容をテキスト化) -->
+        <!-- 体操の詳細説明セクション -->
         <section id="exercises" class="mb-12">
             <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">
                 <span class="border-b-4 border-blue-500 pb-1">プログラム詳細</span>
@@ -108,7 +110,7 @@
                         <span class="text-3xl font-bold text-blue-100">01</span>
                         <i class="fas fa-cat text-blue-500 text-2xl"></i>
                     </div>
-                    <h4 class="text-lg font-bold mb-2">キャット＆ドッグ</h4>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">キャット＆ドッグ</h4>
                     <p class="text-sm text-blue-600 mb-4 font-semibold">脊柱の柔軟性運動</p>
                     <div class="space-y-2 text-gray-600 text-sm">
                         <p><strong><i class="fas fa-play text-xs mr-1"></i>開始:</strong> 四つん這いになり、背中を丸めます。</p>
@@ -125,7 +127,7 @@
                         <span class="text-3xl font-bold text-blue-100">02</span>
                         <i class="fas fa-dumbbell text-blue-500 text-2xl"></i>
                     </div>
-                    <h4 class="text-lg font-bold mb-2">ダンベル・スイング</h4>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">ダンベル・スイング</h4>
                     <p class="text-sm text-blue-600 mb-4 font-semibold">全身の連動性運動</p>
                     <div class="space-y-2 text-gray-600 text-sm">
                         <p><strong><i class="fas fa-play text-xs mr-1"></i>開始:</strong> 重りを持ち、股の下に下ろしてしゃがみます。</p>
@@ -142,7 +144,7 @@
                         <span class="text-3xl font-bold text-blue-100">03</span>
                         <i class="fas fa-child-reaching text-blue-500 text-2xl"></i>
                     </div>
-                    <h4 class="text-lg font-bold mb-2">体幹の回旋・側屈</h4>
+                    <h4 class="text-lg font-bold mb-2 text-gray-800">体幹の回旋・側屈</h4>
                     <p class="text-sm text-blue-600 mb-4 font-semibold">柔軟性を高める運動</p>
                     <div class="space-y-2 text-gray-600 text-sm">
                         <p><strong><i class="fas fa-sync-alt text-xs mr-1"></i>回旋:</strong> 胸の前で手を組み、体を左右にひねります。</p>
@@ -151,36 +153,6 @@
                     <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">
                         目安：左右 各5回
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 動画セクション -->
-        <section id="video" class="bg-blue-900 rounded-2xl shadow-xl overflow-hidden text-white">
-            <div class="p-6 md:p-12 text-center">
-                <h3 class="text-2xl font-bold mb-2">動画で確認する</h3>
-                <p class="mb-8 opacity-80">実際の動きを動画で確認しながら、正しく行いましょう。</p>
-                
-                <div class="relative w-full max-w-3xl mx-auto" style="padding-bottom: 56.25%;">
-                    <!-- 
-                        ★重要: YouTubeの埋め込みコード
-                        'VIDEO_ID' の部分を、実際のYouTube動画ID（URLの v= の後ろの文字列）に書き換えてください。
-                        例: https://www.youtube.com/watch?v=dQw4w9WgXcQ なら dQw4w9WgXcQ
-                    -->
-                    <iframe 
-                        class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl border-4 border-white/20"
-                        src="https://www.youtube.com/embed/VIDEO_ID" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                
-                <div class="mt-6">
-                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-blue-200 underline">
-                        <i class="fab fa-youtube mr-1"></i> YouTubeで直接見る
-                    </a>
                 </div>
             </div>
         </section>
@@ -199,5 +171,4 @@
     </footer>
 
 </body>
-
 </html>
