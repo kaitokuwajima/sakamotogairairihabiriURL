@@ -30,146 +30,262 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
+        /* 画面切り替え用のアニメーション */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
+
+    <script>
+        // 画面を切り替える関数
+        function showPage(pageId) {
+            // すべてのページセクションを隠す
+            document.querySelectorAll('.page-section').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('fade-in');
+            });
+            
+            // 指定されたページを表示
+            const target = document.getElementById(pageId);
+            if(target) {
+                target.classList.remove('hidden');
+                target.classList.add('fade-in');
+            }
+
+            // 画面トップへスクロール
+            window.scrollTo(0, 0);
+        }
+    </script>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- ヘッダー -->
+    <!-- 共通ヘッダー -->
     <header class="header-gradient text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div>
+            <div onclick="showPage('page-home')" class="cursor-pointer">
                 <h1 class="text-xl md:text-2xl font-bold">阪本病院</h1>
                 <p class="text-sm md:text-base opacity-90">外来リハビリテーション部</p>
             </div>
-            <!-- ナビゲーション -->
             <nav class="hidden md:block">
-                <a href="#" class="px-4 py-2 hover:bg-white/20 rounded-lg transition">ホーム</a>
-                <a href="#exercises" class="px-4 py-2 hover:bg-white/20 rounded-lg transition">体操一覧</a>
-                <a href="#video" class="px-4 py-2 hover:bg-white/20 rounded-lg transition">動画解説</a>
+                <button onclick="showPage('page-home')" class="px-4 py-2 hover:bg-white/20 rounded-lg transition text-left">ホーム</button>
+                <button onclick="showPage('page-list')" class="px-4 py-2 hover:bg-white/20 rounded-lg transition text-left">体操一覧</button>
             </nav>
         </div>
     </header>
 
-    <!-- メインコンテンツ -->
+    <!-- メインコンテンツエリア -->
     <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl">
 
-        <!-- ヒーローセクション（タイトル） -->
-        <div class="text-center mb-12">
-            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-2">Home Exercise</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">ご自宅でできる健康体操</h2>
-            <p class="text-lg text-gray-600">無理せず、ご自身のペースで続けましょう。<br>継続は力なり。健康な体作りを目指しましょう。</p>
-            
-            <!-- 注意書き -->
-            <div class="mt-6 bg-red-50 border-l-4 border-red-500 p-4 text-left max-w-2xl mx-auto rounded-r">
-                <p class="font-bold text-red-700 flex items-center">
-                    <i class="fas fa-exclamation-circle mr-2"></i> 注意点
-                </p>
-                <p class="text-red-600 text-sm mt-1">
-                    痛みが出る場合は中止してください。呼吸は止めずに自然に行いましょう。転倒には十分ご注意ください。
-                </p>
+        <!-- ========================================== -->
+        <!-- 1. ホーム画面 (基本の体操) -->
+        <!-- ========================================== -->
+        <div id="page-home" class="page-section fade-in">
+            <!-- タイトル -->
+            <div class="text-center mb-12">
+                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-2">Home Exercise</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">ご自宅でできる健康体操</h2>
+                <p class="text-lg text-gray-600">無理せず、ご自身のペースで続けましょう。<br>継続は力なり。健康な体作りを目指しましょう。</p>
+                
+                <div class="mt-6 bg-red-50 border-l-4 border-red-500 p-4 text-left max-w-2xl mx-auto rounded-r">
+                    <p class="font-bold text-red-700 flex items-center"><i class="fas fa-exclamation-circle mr-2"></i> 注意点</p>
+                    <p class="text-red-600 text-sm mt-1">痛みが出る場合は中止してください。呼吸は止めずに自然に行いましょう。転倒には十分ご注意ください。</p>
+                </div>
+            </div>
+
+            <!-- 画像表示 -->
+            <section class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 border border-gray-100">
+                <div class="p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-blue-200">
+                        <i class="fas fa-image text-blue-600 mr-2"></i>体操シート
+                    </h3>
+                    <div class="flex justify-center bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-300">
+                        <img src="./image_8018db.jpg" alt="健康体操の解説画像" class="max-w-full h-auto rounded shadow-sm cursor-pointer hover:opacity-95 transition">
+                    </div>
+                    <div class="mt-6 text-center">
+                        <div class="bg-blue-50 text-blue-800 px-4 py-3 rounded-lg inline-block">
+                            <i class="fas fa-hand-pointer mr-1"></i>
+                            <span class="font-bold text-sm">画像を「長押し」（PCは右クリック）すると保存できます</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- プログラム詳細 -->
+            <section class="mb-12">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8"><span class="border-b-4 border-blue-500 pb-1">プログラム詳細</span></h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
+                        <div class="flex items-center justify-between mb-4"><span class="text-3xl font-bold text-blue-100">01</span><i class="fas fa-cat text-blue-500 text-2xl"></i></div>
+                        <h4 class="text-lg font-bold mb-2">キャット＆ドッグ</h4>
+                        <p class="text-sm text-blue-600 mb-4 font-semibold">脊柱の柔軟性運動</p>
+                        <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">目安：5往復</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
+                        <div class="flex items-center justify-between mb-4"><span class="text-3xl font-bold text-blue-100">02</span><i class="fas fa-dumbbell text-blue-500 text-2xl"></i></div>
+                        <h4 class="text-lg font-bold mb-2">ダンベル・スイング</h4>
+                        <p class="text-sm text-blue-600 mb-4 font-semibold">全身の連動性運動</p>
+                        <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">目安：10回</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
+                        <div class="flex items-center justify-between mb-4"><span class="text-3xl font-bold text-blue-100">03</span><i class="fas fa-child-reaching text-blue-500 text-2xl"></i></div>
+                        <h4 class="text-lg font-bold mb-2">体幹の回旋・側屈</h4>
+                        <p class="text-sm text-blue-600 mb-4 font-semibold">柔軟性を高める運動</p>
+                        <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">目安：左右 各5回</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 動画 -->
+            <section class="bg-blue-900 rounded-2xl shadow-xl overflow-hidden text-white mb-12">
+                <div class="p-6 md:p-12 text-center">
+                    <h3 class="text-2xl font-bold mb-2">動画で確認する</h3>
+                    <p class="mb-8 opacity-80">実際の動きを動画で確認しながら、正しく行いましょう。</p>
+                    <div class="relative w-full max-w-3xl mx-auto" style="padding-bottom: 56.25%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl border-4 border-white/20" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 他の体操へ -->
+            <section class="text-center py-8">
+                <h3 class="text-xl font-bold text-gray-700 mb-6">その他のプログラム</h3>
+                <button onclick="showPage('page-list')" class="inline-flex items-center justify-center bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-bold py-4 px-10 rounded-full transition shadow-md hover:shadow-lg w-full md:w-auto group">
+                    <span class="mr-2">もっと違う体操を見る</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition"></i>
+                </button>
+            </section>
+        </div>
+
+
+        <!-- ========================================== -->
+        <!-- 2. 一覧画面 -->
+        <!-- ========================================== -->
+        <div id="page-list" class="page-section hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">プログラムを選択してください</h2>
+            <div class="bg-white rounded-lg shadow p-6 mb-8">
+                <ul class="space-y-4">
+                    <li class="border-b border-gray-100 pb-2">
+                        <button onclick="showPage('page-home')" class="w-full flex items-center text-lg text-blue-700 hover:text-blue-500 hover:underline transition text-left">
+                            <i class="fas fa-home w-8 text-gray-400"></i>
+                            ご自宅でできる健康体操（基本編）
+                        </button>
+                    </li>
+                    <li class="border-b border-gray-100 pb-2">
+                        <button onclick="showPage('page-posture')" class="w-full flex items-center text-lg text-blue-700 hover:text-blue-500 hover:underline transition text-left">
+                            <i class="fas fa-child-reaching w-8 text-gray-400"></i>
+                            姿勢リセット3つのエクササイズ
+                            <span class="ml-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">New</span>
+                        </button>
+                    </li>
+                    <li class="border-b border-gray-100 pb-2 opacity-50">
+                        <span class="flex items-center text-lg text-gray-400 cursor-not-allowed">
+                            <i class="fas fa-plus-circle w-8 text-gray-300"></i>
+                            （準備中）腰痛予防体操
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-center">
+                <button onclick="showPage('page-home')" class="text-gray-500 hover:text-gray-700 text-sm">
+                    <i class="fas fa-arrow-left mr-1"></i> ホームに戻る
+                </button>
             </div>
         </div>
 
-        <!-- 画像表示セクション -->
-        <section class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 border border-gray-100">
-            <div class="p-6 md:p-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-blue-200">
-                    <i class="fas fa-image text-blue-600 mr-2"></i>体操シート
-                </h3>
-                
-                <div class="flex justify-center bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-300">
-                    <!-- 
-                        画像ファイル名: image_8018db.jpg
-                        画像を長押ししやすいように、imgタグ自体にも工夫をしています。
-                    -->
-                    <img src="URLから画像と動画でのやり方を解説。➡.png" alt="健康体操の解説画像" class="max-w-full h-auto rounded shadow-sm cursor-pointer hover:opacity-95 transition">
-                </div>
-                
-                <div class="mt-6 text-center">
-                    <!-- 
-                        【変更点1】PC用保存ボタンを削除し、案内を常に表示するように変更しました。
-                    -->
-                    <div class="bg-blue-50 text-blue-800 px-4 py-3 rounded-lg inline-block">
-                        <i class="fas fa-hand-pointer mr-1"></i>
-                        <span class="font-bold text-sm">画像を「長押し」（PCは右クリック）すると保存できます</span>
-                    </div>
-                </div>
+
+        <!-- ========================================== -->
+        <!-- 3. 姿勢リセット体操画面 -->
+        <!-- ========================================== -->
+        <div id="page-posture" class="page-section hidden">
+            <!-- タイトル -->
+            <div class="text-center mb-12">
+                <span class="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full mb-2">Posture Reset</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">姿勢リセット3つのエクササイズ</h2>
+                <p class="text-lg text-gray-600">猫背や巻き肩が気になる方へ。<br>呼吸を意識して、胸郭と背骨をリセットしましょう。</p>
             </div>
-        </section>
 
-        <!-- 体操の詳細説明セクション -->
-        <section id="exercises" class="mb-12">
-            <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">
-                <span class="border-b-4 border-blue-500 pb-1">プログラム詳細</span>
-            </h3>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- 体操1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl font-bold text-blue-100">01</span>
-                        <i class="fas fa-cat text-blue-500 text-2xl"></i>
+            <!-- 画像表示 -->
+            <section class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 border border-gray-100">
+                <div class="p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-green-200">
+                        <i class="fas fa-image text-green-600 mr-2"></i>体操シート
+                    </h3>
+                    <div class="flex justify-center bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-300">
+                        <!-- 画像ファイル名 -->
+                        <img src="./posture_reset.jpg" alt="姿勢リセット体操の解説画像" class="max-w-full h-auto rounded shadow-sm cursor-pointer hover:opacity-95 transition">
                     </div>
-                    <h4 class="text-lg font-bold mb-2 text-gray-800">キャット＆ドッグ</h4>
-                    <p class="text-sm text-blue-600 mb-4 font-semibold">脊柱の柔軟性運動</p>
-                    <div class="space-y-2 text-gray-600 text-sm">
-                        <p><strong><i class="fas fa-play text-xs mr-1"></i>開始:</strong> 四つん這いになり、背中を丸めます。</p>
-                        <p><strong><i class="fas fa-check text-xs mr-1"></i>終了:</strong> 天井を見るように背中を反らせます。</p>
-                    </div>
-                    <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">
-                        目安：5往復
+                    <div class="mt-6 text-center">
+                        <div class="bg-green-50 text-green-800 px-4 py-3 rounded-lg inline-block">
+                            <i class="fas fa-hand-pointer mr-1"></i>
+                            <span class="font-bold text-sm">画像を「長押し」（PCは右クリック）すると保存できます</span>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- 体操2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl font-bold text-blue-100">02</span>
-                        <i class="fas fa-dumbbell text-blue-500 text-2xl"></i>
+            <!-- プログラム詳細 -->
+            <section class="mb-12">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8"><span class="border-b-4 border-green-500 pb-1">プログラム詳細</span></h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-yellow-400">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-yellow-500">01</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded">10回 × 2</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">キャット＆ドッグ</h4>
+                        <p class="text-sm text-gray-600 mb-4">背骨の動きを意識して、呼吸を忘れずに行いましょう。</p>
                     </div>
-                    <h4 class="text-lg font-bold mb-2 text-gray-800">ダンベル・スイング</h4>
-                    <p class="text-sm text-blue-600 mb-4 font-semibold">全身の連動性運動</p>
-                    <div class="space-y-2 text-gray-600 text-sm">
-                        <p><strong><i class="fas fa-play text-xs mr-1"></i>開始:</strong> 重りを持ち、股の下に下ろしてしゃがみます。</p>
-                        <p><strong><i class="fas fa-check text-xs mr-1"></i>終了:</strong> 勢いをつけて天井へ持ち上げます。</p>
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-pink-400">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-pink-500">02</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs font-bold px-2 py-1 rounded">10回 × 2</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">ウォールスライド</h4>
+                        <p class="text-sm text-gray-600 mb-4">壁から手の甲が離れないように！痛みのない範囲で行ってください。</p>
                     </div>
-                    <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">
-                        目安：10回
+                    <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-400">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-3xl font-bold text-blue-500">03</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">座位の運動</span>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">３つのプレス＆ストレッチ</h4>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-4"><li>① 合掌プレス</li><li>② 引っ張り合いプレス</li><li>③ 胸開きストレッチ</li></ul>
                     </div>
                 </div>
+            </section>
 
-                <!-- 体操3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-3xl font-bold text-blue-100">03</span>
-                        <i class="fas fa-child-reaching text-blue-500 text-2xl"></i>
-                    </div>
-                    <h4 class="text-lg font-bold mb-2 text-gray-800">体幹の回旋・側屈</h4>
-                    <p class="text-sm text-blue-600 mb-4 font-semibold">柔軟性を高める運動</p>
-                    <div class="space-y-2 text-gray-600 text-sm">
-                        <p><strong><i class="fas fa-sync-alt text-xs mr-1"></i>回旋:</strong> 胸の前で手を組み、体を左右にひねります。</p>
-                        <p><strong><i class="fas fa-arrows-alt-h text-xs mr-1"></i>側屈:</strong> 片手を上げ、体を真横に倒して脇を伸ばします。</p>
-                    </div>
-                    <div class="mt-4 bg-gray-100 p-2 rounded text-center text-sm font-bold text-gray-700">
-                        目安：左右 各5回
+            <!-- 動画（準備中） -->
+            <section class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden text-white mb-12">
+                <div class="p-8 text-center">
+                    <h3 class="text-xl font-bold mb-4">この体操の動画解説</h3>
+                    <div class="bg-gray-700 rounded-lg p-8 border-2 border-dashed border-gray-600">
+                        <p class="text-gray-400 mb-2"><i class="fas fa-video-slash text-3xl"></i></p>
+                        <p>現在、動画準備中です。</p>
                     </div>
                 </div>
+            </section>
+
+            <div class="text-center mb-8">
+                <button onclick="showPage('page-list')" class="inline-flex items-center text-green-600 font-bold hover:underline">
+                    <i class="fas fa-arrow-left mr-2"></i> 体操一覧に戻る
+                </button>
             </div>
-        </section>
+        </div>
 
     </main>
 
-    <!-- フッター -->
+    <!-- 共通フッター -->
     <footer class="bg-gray-800 text-gray-300 py-8">
         <div class="container mx-auto px-4 text-center">
             <p class="font-bold text-lg text-white mb-2">阪本病院</p>
             <p class="text-sm mb-4">外来リハビリテーション部</p>
-            <div class="text-xs text-gray-500">
-                &copy; Sakamoto Hospital Rehabilitation Dept. All Rights Reserved.
-            </div>
+            <div class="text-xs text-gray-500">&copy; Sakamoto Hospital Rehabilitation Dept. All Rights Reserved.</div>
         </div>
     </footer>
 
 </body>
 </html>
-
