@@ -291,7 +291,92 @@
         </div>
 
     </main>
+<!-- ========================================== -->
+<!-- 4. 【追加】上半身トレーニング画面 -->
+<!-- ========================================== -->
+<div id="page-upper" class="page-section hidden">
+    <!-- タイトル -->
+    <div class="text-center mb-12">
+        <span class="inline-block bg-orange-100 text-orange-800 text-sm font-semibold px-3 py-1 rounded-full mb-2">Upper Body Training</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">上半身トレーニング</h2>
+        <p class="text-lg text-gray-600">肩こり解消や、腕・背中の筋力アップに。<br>道具を使わず、座ったままでもできる運動です。</p>
+        
+        <div class="mt-6 bg-orange-50 border-l-4 border-orange-500 p-4 text-left max-w-2xl mx-auto rounded-r">
+            <p class="font-bold text-orange-700 flex items-center"><i class="fas fa-info-circle mr-2"></i> ポイント</p>
+            <p class="text-orange-800 text-sm mt-1">肩に痛みがある場合は、腕を上げる角度を調整してください。反動を使わず、ゆっくり動かすことが大切です。</p>
+        </div>
+    </div>
 
+    <!-- 画像表示 -->
+    <section class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12 border border-gray-100">
+        <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-orange-200">
+                <i class="fas fa-image text-orange-500 mr-2"></i>体操シート
+            </h3>
+            <div class="flex justify-center bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-300">
+                <!-- ここに新しい画像ファイル名を設定してください -->
+                <img src="上半身トレーニング画像.png" onerror="this.src='[https://placehold.jp/30/e0e0e0/808080/800x500.png?text=画像未設定](https://placehold.jp/30/e0e0e0/808080/800x500.png?text=画像未設定)'" alt="上半身トレーニングの解説画像" class="max-w-full h-auto rounded shadow-sm cursor-pointer hover:opacity-95 transition">
+            </div>
+            <div class="mt-6 text-center">
+                <div class="bg-orange-50 text-orange-800 px-4 py-3 rounded-lg inline-block">
+                    <i class="fas fa-hand-pointer mr-1"></i>
+                    <span class="font-bold text-sm">画像を「長押し」（PCは右クリック）すると保存できます</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プログラム詳細 -->
+    <section class="mb-12">
+        <h3 class="text-2xl font-bold text-center text-gray-800 mb-8"><span class="border-b-4 border-orange-500 pb-1">プログラム詳細</span></h3>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-orange-400">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-3xl font-bold text-orange-500">01</span>
+                    <span class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded">10回</span>
+                </div>
+                <h4 class="text-lg font-bold mb-2">壁押し腕立て</h4>
+                <p class="text-sm text-gray-600 mb-4">壁に手をついて、ゆっくり肘を曲げ伸ばしします。胸の筋肉を意識しましょう。</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-indigo-400">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-3xl font-bold text-indigo-500">02</span>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-1 rounded">10回</span>
+                </div>
+                <h4 class="text-lg font-bold mb-2">タオルプルダウン</h4>
+                <p class="text-sm text-gray-600 mb-4">タオルを両手で持ち、頭の上から首の後ろへ下ろします。肩甲骨を寄せる意識で。</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-red-400">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-3xl font-bold text-red-500">03</span>
+                    <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">20秒×2</span>
+                </div>
+                <h4 class="text-lg font-bold mb-2">肩の上げ下げ</h4>
+                <p class="text-sm text-gray-600 mb-4">息を吸いながら肩をすくめ、吐きながらストンと脱力します。首こり解消に。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 動画（準備中） -->
+    <section class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden text-white mb-12">
+        <div class="p-8 text-center">
+            <h3 class="text-xl font-bold mb-4">この体操の動画解説</h3>
+            <div class="bg-gray-700 rounded-lg p-8 border-2 border-dashed border-gray-600">
+                <p class="text-gray-400 mb-2"><i class="fas fa-video-slash text-3xl"></i></p>
+                <p>現在、動画準備中です。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 他の体操へ -->
+    <section class="text-center py-8">
+        <h3 class="text-xl font-bold text-gray-700 mb-6">その他のプログラム</h3>
+        <button onclick="showPage('page-list')" class="inline-flex items-center justify-center bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-bold py-4 px-10 rounded-full transition shadow-md hover:shadow-lg w-full md:w-auto group">
+            <span class="mr-2">もっと違う体操を見る</span>
+            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition"></i>
+        </button>
+    </section>
+</div>
     <!-- 共通フッター -->
     <footer class="bg-gray-800 text-gray-300 py-8">
         <div class="container mx-auto px-4 text-center">
@@ -303,6 +388,7 @@
 
 </body>
 </html>
+
 
 
 
